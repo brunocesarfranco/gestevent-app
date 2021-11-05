@@ -1,6 +1,11 @@
-<button (click)="navigateToTicketCreate()">Criar Novo Ticket</button>
-
+<h3>Lista de Eventos</h3>
+<button (click)="navigateToTicketCreate()">Criar/Comprar Novo Ticket</button>&nbsp;
+<button (click)="navigateToCreateEvent()">Criar Novo Evento</button>&nbsp;
+<button (click)="navigateToCreateUser()">Criar Novo Usuário</button>&nbsp;
+<button (click)="navigateToLogin()">Sair</button>
+<br>
 <table>
+  &nbsp;
   <tr>
     <th>Id</th>
     <th>Título</th>
@@ -13,6 +18,5 @@
     <td>{{ e.title }}</td>
     <td>{{ e.description }}</td>
     <td>{{ e.date }}</td>
-    <th><button (click)="btnClick(e.id)">ingressos</button></th>
   </tr>
 </table>

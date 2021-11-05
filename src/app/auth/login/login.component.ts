@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginForm } from '../models/login-form';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _tokenService: TokenService,
-    private _authService: AuthService) { }
+    private _authService: AuthService,
+    private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +37,10 @@ export class LoginComponent implements OnInit {
 
     this._tokenService.fetchToken(this.loginForm)
       .toPromise()
-      .then(token => this._authService.saveToken(token.token))
+      .then(token => {
+        this._authService.saveToken(token.token);
+        this._router.navigate(['/events-all']);
+      })
       .catch(err => alert("Usuário ou senha incorretos"));
   }
 }

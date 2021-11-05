@@ -1,11 +1,17 @@
+<h3>Cadastro de Ticket</h3>
+<h4>Selecione um evento abaixo!</h4>
 <select name="eventId" id="" [(ngModel)]="eventId">
-    <option *ngFor="let aEvent of events" [value]="aEvent.id">{{aEvent.title}}</option>
+    <option *ngFor="let aEvent of events" [value]="aEvent.id">{{aEvent.title}};</option>
 </select>
+&nbsp;
 <input type="number" name="price" [(ngModel)]="price">
+&nbsp;
+<button (click)="onBtnCreatePressed()">Criar</button>&nbsp;
+<button (click)="backToEventAll()">Voltar</button>
 
-<button (click)="onBtnCreatePressed()">Criar</button>
-
-<table>
+<h3>Lista de Tickets</h3>
+<div>
+  <table>
     <tr>
       <th>Id</th>
       <th>Event</th>
@@ -13,12 +19,16 @@
       <th>Was Sold</th>
       <th>User Id</th>
     </tr>
+    &nbsp;
     <tr *ngFor="let aTicket of tickets">
       <td>{{ aTicket.id }}</td>
       <td>{{ getEventName(aTicket.eventId) }}</td>
       <td>{{ aTicket.price }}</td>
       <td>{{ aTicket.wasSold }}</td>
-      <td>{{ aTicket.userId }}</td>
+      <td>{{ aTicket.userId }}&nbsp;</td>
+      <th><button (click)="btnClick()">COMPRAR</button></th>
       <th></th>
     </tr>
 </table>
+</div>
+

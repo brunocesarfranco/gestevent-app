@@ -3,6 +3,7 @@ import { EventsService } from '../services/events.service';
 import { Event } from '../models/event'
 import { TicketService } from '../services/ticket.service';
 import { Ticket } from '../models/ticket';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tickets-create',
@@ -19,7 +20,8 @@ export class TicketsCreateComponent implements OnInit {
 
   constructor(
     private _eventsService: EventsService,
-    private _ticketService: TicketService) { }
+    private _ticketService: TicketService,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this._eventsService.fetchEvents()
@@ -47,7 +49,9 @@ export class TicketsCreateComponent implements OnInit {
 
     this._ticketService.createTicket(createTicket)
       .toPromise()
-      .then(success => alert(`ticket criado com sucesso, id: ${success.id}`))
+      .then(success => {
+        alert(`ticket criado com sucesso, id: ${success.id}`)
+      })
       .catch(err => {
         alert('algo deu errado..');
         console.error(err);
@@ -57,5 +61,13 @@ export class TicketsCreateComponent implements OnInit {
   getEventName(id: string) {
     const event: Event | undefined = this.events.find(e => e.id === id);
     return event?.title ?? '';
+  }
+
+  backToEventAll() {
+    this._router.navigate(['/events-all'])
+  }
+
+  btnClick() {
+
   }
 }

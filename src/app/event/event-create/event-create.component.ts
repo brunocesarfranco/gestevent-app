@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event } from '../models/event'
 import { EventsService } from '../services/events.service';
-import { TicketService } from '../services/ticket.service';
 
 @Component({
   selector: 'app-event-create',
@@ -11,7 +11,10 @@ import { TicketService } from '../services/ticket.service';
 export class EventCreateComponent implements OnInit {
 
   eventForm: Event = new Event();
-  constructor(private _eventService: EventsService) { }
+  constructor(
+    private _eventService: EventsService,
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -31,8 +34,17 @@ export class EventCreateComponent implements OnInit {
     this.eventForm.date = new Date(this.eventForm.date);
     this._eventService.createEvent(this.eventForm)
       .toPromise()
-      .then(e => alert(`Evento criado com id: ${e.id}`))
-      .then(console.error);
+      .then(e => {
+        alert(`Evento criado com id: ${e.id}`);
+        this._router.navigate(['/events-all']);
+      })
+      .catch(err => {
+        alert("Verifique se seu evento é valido");
+
+      });
   }
 
+  backToEventAll() {
+    this._router.navigate(['/events-all'])
+  }
 }

@@ -1,9 +1,27 @@
-<form>
-    <label for="username">Username</label>&nbsp;
-    <input type="text" name="username" [(ngModel)]="loginForm.username">
-    <br>
-    <label for="password">Password</label>&nbsp;&nbsp;
-    <input type="text" name="password" [(ngModel)]="loginForm.password">
-    <br>
-    <button (click)="sendToken()">Entrar</button>
-</form>
+<div class="box-parent-login">
+	<div class="well bg-white box-login">
+		<h1 class="ls-login-logo">GestEvent - Desafio MBLabs</h1>
+		<form role="form">
+			<fieldset>
+ 
+				<div class="form-group ls-login-user">
+					<label for="userLogin">&nbsp;Usuário&nbsp;</label>
+					<input type="text" name="username" [(ngModel)]="loginForm.username">
+				</div>
+                <br>
+				<div class="form-group ls-login-password">
+					<label for="userPassword">&nbsp;Senha&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<input type="text" name="password" [(ngModel)]="loginForm.password">
+				</div>
+                <br>
+                <button (click)="sendToken()">&nbsp;Entrar&nbsp;</button>
+                <br>
+				<p class="txt-center ls-login-signup">Não possui um cadastro na GestEvent?
+					<a href="/user-create-out"> Cadastre-se agora </a>
+				</p>
+ 
+			</fieldset>
+		</form>
+	</div>
+</div>
+

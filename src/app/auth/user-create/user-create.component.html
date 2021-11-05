@@ -1,0 +1,16 @@
+<div>
+    <form>
+        <label for="username">Usuário</label>&nbsp;
+        <input type="text" name="username" [(ngModel)]="registrationForm.username">
+        <br>
+        <br>
+        <label for="password">Senha&ensp;&nbsp;</label>&nbsp;
+        <input type="text" name="password" [(ngModel)]="registrationForm.password">
+        <br>
+    </form>
+</div>
+<br>
+<div>
+    <button (click)="register()">Cadastrar</button>&nbsp;
+    <button (click)="backToEventAll()">Voltar</button>
+</div>

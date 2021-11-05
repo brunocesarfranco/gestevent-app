@@ -1,3 +1,4 @@
+<h3>Criar Novo Evento</h3>
 <label for="titulo">Titulo</label><br>
 <input type="text" name="titulo" [(ngModel)]="eventForm.title"><br>
 <br>
@@ -7,5 +8,6 @@
 <label for="descricao">Descrição</label><br>
 <input type="text" name="descricao" [(ngModel)]="eventForm.description"><br>
 <br>
-
 <button (click)="createEvent()">Criar</button>
+&nbsp;
+<button (click)="backToEventAll()">Voltar</button>
