@@ -1,0 +1,24 @@
+<select name="eventId" id="" [(ngModel)]="eventId">
+    <option *ngFor="let aEvent of events" [value]="aEvent.id">{{aEvent.title}}</option>
+</select>
+<input type="number" name="price" [(ngModel)]="price">
+
+<button (click)="onBtnCreatePressed()">Criar</button>
+
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Event</th>
+      <th>Price</th>
+      <th>Was Sold</th>
+      <th>User Id</th>
+    </tr>
+    <tr *ngFor="let aTicket of tickets">
+      <td>{{ aTicket.id }}</td>
+      <td>{{ getEventName(aTicket.eventId) }}</td>
+      <td>{{ aTicket.price }}</td>
+      <td>{{ aTicket.wasSold }}</td>
+      <td>{{ aTicket.userId }}</td>
+      <th></th>
+    </tr>
+</table>
